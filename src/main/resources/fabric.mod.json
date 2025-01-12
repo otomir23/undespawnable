@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "undespawnable",
+  "version": "${version}",
+  "name": "undespawnable",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/undespawnable/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.otomir23.undespawnable.client.UndespawnableClient"
+    ],
+    "main": [
+      "me.otomir23.undespawnable.Undespawnable"
+    ]
+  },
+  "mixins": [
+    "undespawnable.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-language-kotlin": ">=${kotlin_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

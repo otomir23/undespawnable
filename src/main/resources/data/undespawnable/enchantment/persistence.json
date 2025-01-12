@@ -1,0 +1,29 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.undespawnable.persistence"
+  },
+  "effects": {
+    "undespawnable:add_despawn_time": [
+      {
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 6000.0,
+          "per_level_above_first": 6000.0
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 41,
+    "per_level_above_first": 0
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 0
+  },
+  "slots": ["any"],
+  "supported_items": "#c:enchantables",
+  "weight": 2
+}
