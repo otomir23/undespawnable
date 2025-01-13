@@ -4,8 +4,11 @@
   "version": "${version}",
   "name": "undespawnable",
   "description": "",
-  "authors": [],
-  "contact": {},
+  "authors": ["otomir23", "keetsta"],
+  "contact": {
+    "sources": "https://github.com/otomir23/undespawnable",
+    "issues": "https://github.com/otomir23/undespawnable/issues"
+  },
   "license": "MIT",
   "icon": "assets/undespawnable/icon.png",
   "environment": "*",
