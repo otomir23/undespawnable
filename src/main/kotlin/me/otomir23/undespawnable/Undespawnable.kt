@@ -3,6 +3,7 @@ package me.otomir23.undespawnable
 import me.otomir23.undespawnable.Components.DESPAWN_TIME_COMPONENT
 import me.otomir23.undespawnable.Components.ADD_DESPAWN_TIME_ENCHANTMENT_EFFECT
 import me.otomir23.undespawnable.Enchantments.PERSISTENCE
+import me.otomir23.undespawnable.GameRules.ITEM_DESPAWN_TIME
 import net.fabricmc.api.ModInitializer
 
 class Undespawnable : ModInitializer {
@@ -14,5 +15,6 @@ class Undespawnable : ModInitializer {
         DESPAWN_TIME_COMPONENT
         ADD_DESPAWN_TIME_ENCHANTMENT_EFFECT
         PERSISTENCE
+        ITEM_DESPAWN_TIME
     }
 }

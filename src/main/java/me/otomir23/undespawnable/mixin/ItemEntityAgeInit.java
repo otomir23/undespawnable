@@ -1,8 +1,10 @@
 package me.otomir23.undespawnable.mixin;
 
 import me.otomir23.undespawnable.AddDespawnTimeEnchantmentEffect;
+import me.otomir23.undespawnable.GameRules;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,7 +27,10 @@ public abstract class ItemEntityAgeInit {
     public void overrideAge(World world, double x, double y, double z, ItemStack stack, double velocityX, double velocityY, double velocityZ, CallbackInfo ci){
         if(world.isClient())
             return;
-        var despawnTime = stack.getOrDefault(Components.INSTANCE.DESPAWN_TIME_COMPONENT(), DESPAWN_AGE + AddDespawnTimeEnchantmentEffect.Companion.getDespawnTimeBonus(stack));
+        var despawnTime = stack.getOrDefault(
+                Components.DESPAWN_TIME_COMPONENT,
+                ((ServerWorld)world).getGameRules().getInt(GameRules.ITEM_DESPAWN_TIME) + AddDespawnTimeEnchantmentEffect.Companion.getDespawnTimeBonus(stack)
+        );
         setItemAge(DESPAWN_AGE - despawnTime);
     }
 }

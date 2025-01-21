@@ -8,13 +8,14 @@ import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 
 object Components {
-    @get:JvmName("DESPAWN_TIME_COMPONENT")
+    @JvmField
     val DESPAWN_TIME_COMPONENT: ComponentType<Int> = Registry.register(
         Registries.DATA_COMPONENT_TYPE,
         Identifier.of(MOD_ID, "despawn_time"),
         ComponentType.builder<Int>().codec(Codec.INT).build()
     )
 
+    @JvmField
     val ADD_DESPAWN_TIME_ENCHANTMENT_EFFECT = Registry.register(
         Registries.ENCHANTMENT_EFFECT_COMPONENT_TYPE,
         Identifier.of(MOD_ID, "add_despawn_time"),

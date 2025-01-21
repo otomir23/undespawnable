@@ -1,3 +1,4 @@
 {
-  "enchantment.undespawnable.persistence": "Persistence"
+  "enchantment.undespawnable.persistence": "Persistence",
+  "gamerule.itemDespawnTime": "Item despawn time"
 }
