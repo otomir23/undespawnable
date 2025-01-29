@@ -18,18 +18,20 @@ import me.otomir23.undespawnable.Components;
 
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityAgeInit {
-    @Shadow @Final private static int DESPAWN_AGE;
+    @Shadow
+    @Final
+    private static int DESPAWN_AGE;
 
     @Accessor("itemAge")
     public abstract void setItemAge(int itemAge);
 
     @Inject(method = "<init>(Lnet/minecraft/world/World;DDDLnet/minecraft/item/ItemStack;DDD)V", at = @At("TAIL"))
-    public void overrideAge(World world, double x, double y, double z, ItemStack stack, double velocityX, double velocityY, double velocityZ, CallbackInfo ci){
-        if(world.isClient())
+    public void overrideAge(World world, double x, double y, double z, ItemStack stack, double velocityX, double velocityY, double velocityZ, CallbackInfo ci) {
+        if (world.isClient())
             return;
         var despawnTime = stack.getOrDefault(
                 Components.DESPAWN_TIME_COMPONENT,
-                ((ServerWorld)world).getGameRules().getInt(GameRules.ITEM_DESPAWN_TIME) + AddDespawnTimeEnchantmentEffect.Companion.getDespawnTimeBonus(stack)
+                ((ServerWorld) world).getGameRules().getInt(GameRules.ITEM_DESPAWN_TIME) + AddDespawnTimeEnchantmentEffect.Companion.getDespawnTimeBonus(stack)
         );
         setItemAge(DESPAWN_AGE - despawnTime);
     }
