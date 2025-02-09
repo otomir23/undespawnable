@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "2.1.0"
     id("fabric-loom") version "1.9.2"
+    id("com.modrinth.minotaur") version "2.+"
     id("maven-publish")
 }
 
@@ -93,4 +94,20 @@ publishing {
         // The repositories here will be used for publishing your artifact, not for
         // retrieving dependencies.
     }
+}
+
+// configure modrinth publishing
+modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN"))
+    projectId.set("undespawnable")
+    uploadFile.set(tasks.remapJar)
+    gameVersions.add(project.property("minecraft_version") as String)
+    dependencies {
+        required.version("fabric-api", project.property("fabric_version") as String)
+        required.version("fabric-language-kotlin", project.property("kotlin_loader_version") as String)
+    }
+    syncBodyFrom = rootProject.file("README.md").readText()
+}
+tasks.modrinth.configure {
+    dependsOn(tasks.modrinthSyncBody)
 }
