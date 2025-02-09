@@ -101,6 +101,7 @@ modrinth {
     token.set(System.getenv("MODRINTH_TOKEN"))
     projectId.set("undespawnable")
     uploadFile.set(tasks.remapJar)
+    versionType.set("beta")
     gameVersions.add(project.property("minecraft_version") as String)
     dependencies {
         required.version("fabric-api", project.property("fabric_version") as String)
